@@ -11,7 +11,7 @@ import ast
 
 max_api_wait_time = 3
 max_time = 10
-apis = [r"https://clips.im.allmendenetz.de/",r"https://inv.bp.projectsegfau.lt/",r"https://inv.nadeko.net/",r"https://inv.odyssey346.dev/",r"https://inv.privacy.com.de/",r"https://inv.riverside.rocks/",r"https://inv.tux.pizza/",r"https://inv.us.projectsegfau.lt/",r"https://inv.vern.cc/",r"https://invi.susurrando.com/",r"https://invidio.xamh.de/"]
+apis = [r"https://invidious.adminforge.de/",r"https://invidious.baczek.me/",r"https://invidious.chunboan.zone/",r"https://invidious.drgns.space/",r"https://invidious.einfachzocken.eu/"]
 url = requests.get(r'https://raw.githubusercontent.com/mochidukiyukimi/yuki-youtube-instance/main/instance.txt').text.rstrip()
 version = "1.0"
 
