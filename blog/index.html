@@ -42,23 +42,6 @@
             }
             
         </style>
-        <script>
-            var doc = document;
-            
-            function getElm(id){
-                return doc.getElementById(id)
-            }
-            
-            function check(){
-                if(getElm('check').value == 'pass'){ <!--パスワードを入れる-->
-                    getElm('result').textContent = '正解';
-                    doc.cookie = 'yuki=True; path=/;';
-                    location.replace('/')
-                }else{
-                    getElm('result').textContent = '不正解';
-                }
-                return
-            }
         </script>
     </head>
     <body>
@@ -67,15 +50,12 @@
             <div id="header">
                 <script>
                     window.onload = function(){
-                        document.cookie = "yuki=True";
+                        document.cookie = "yuki=True; max-age=31536000; path=/";
                     }
                 </script>
-                <a href="/watch?v=nHGW_wUfqkQ">test</a>
+                <a href="/watch?v=nHGW_wUfqkQ"><p>test</p></a>
                 <!--好きな文を入れよう-->
                 <!--<a href="/nyanko_a/link/"></a> サイト集やチャトワへのリンク-->
-                <input id="check" type="text">
-                <input type="button" onclick="check()" value="Check">
-                <div id="result"></div>
             </div>
             
         </div>
