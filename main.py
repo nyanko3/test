@@ -11,7 +11,7 @@ import ast
 
 max_api_wait_time = 3
 max_time = 10
-apis = [r"https://invidious.baczek.me/"]
+apis = [r"https://clips.im.allmendenetz.de/",r"https://inv.bp.projectsegfau.lt/",r"https://inv.nadeko.net/",r"https://inv.odyssey346.dev/",r"https://inv.privacy.com.de/",r"https://inv.riverside.rocks/",r"https://inv.tux.pizza/",r"https://inv.us.projectsegfau.lt/",r"https://inv.vern.cc/",r"https://invi.susurrando.com/",r"https://invidio.xamh.de/",r"https://invidious.adminforge.de/",r"https://invidious.chunboan.zone/",r"https://invidious.drgns.space/",r"https://invidious.einfachzocken.eu/",r"https://invidious.fdn.fr/",r"https://invidious.jing.rocks/",r"https://invidious.lunar.icu/",r"https://invidious.materialio.us/",r"https://invidious.namazso.eu/",r"https://invidious.pcgamingfreaks.at/",r"https://invidious.perennialte.ch/",r"https://invidious.privacydev.net/",r"https://invidious.privacyredirect.com/",r"https://invidious.private.coffee/",r"https://invidious.projectsegfau.lt/",r"https://invidious.protokolla.fi/",r"https://invidious.qwik.space/",r"https://invidious.reallyaweso.me/",r"https://invidious.rhyshl.live/",r"https://invidious.sethforprivacy.com/",r"https://invidious.slipfox.xyz/",r"https://invidious.snopyta.org/",r"https://invidious.tiekoetter.com/",r"https://invidious.varishangout.net/",r"https://invidious.vern.cc/",r"https://invidious.weblibre.org/",r"https://invidious.yourdevice.ch/",r"https://invidious.zapashcanon.fr/",r"https://iteroni.com/"]
 url = requests.get(r'https://raw.githubusercontent.com/mochidukiyukimi/yuki-youtube-instance/main/instance.txt').text.rstrip()
 version = "1.0"
 
