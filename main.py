@@ -155,7 +155,7 @@ def get_replies(videoid, key):
 def get_level(word):
     for i1 in range(1, 13):
         with open(f'Level{i1}.txt', 'r', encoding='UTF-8', newline='\n') as f:
-            if a in [i2.rstrip("\r\n") for i2 in f.readlines()]:
+            if word in [i2.rstrip("\r\n") for i2 in f.readlines()]:
                 return i1
     return 0
     
@@ -190,7 +190,7 @@ from typing import Union
 
 app = FastAPI(docs_url=None, redoc_url=None, openapi_url=None)
 app.mount("/css", StaticFiles(directory="./css"), name="static")
-app.mount("/a, StaticFiles(directory="./blog", html=True), name="static")
+app.mount("/word, StaticFiles(directory="./blog", html=True), name="static")
 app.add_middleware(GZipMiddleware, minimum_size=1000)
 
 from fastapi.templating import Jinja2Templates
@@ -207,7 +207,7 @@ def home(response: Response, request: Request, yuki: Union[str] = Cookie(None)):
         response.set_cookie("yuki", "True", max_age=60 * 60 * 24 * 7)
         return template("home.html", {"request": request})
     print(check_cokie(yuki))
-    return redirect("/a")
+    return redirect("/word")
 
 @app.get('/watch', response_class=HTMLResponse)
 def video(v:str, response: Response, request: Request, yuki: Union[str] = Cookie(None), proxy: Union[str] = Cookie(None)):
