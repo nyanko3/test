@@ -11,7 +11,7 @@ import ast
 
 max_api_wait_time = 3
 max_time = 10
-apis = ['https://invidious.flokinet.to/']
+apis = ['https://y.com.sb/']
 url = requests.get(r'https://raw.githubusercontent.com/mochidukiyukimi/yuki-youtube-instance/main/instance.txt').text.rstrip()
 version = "1.0"
 
