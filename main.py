@@ -11,7 +11,7 @@ import ast
 
 max_api_wait_time = 3
 max_time = 10
-apis = [r"https://inv.nadeko.net/",r"https://invidious.qwik.space/",r"https://invidious.jing.rocks/",r"https://invidious.nerdvpn.de/"]
+apis = ast.literal_eval(requests.get('https://raw.githubusercontent.com/nyanko3/invi-test/main/instances.txt').text)
 url = requests.get(r'https://raw.githubusercontent.com/mochidukiyukimi/yuki-youtube-instance/main/instance.txt').text.rstrip()
 version = "1.0"
 
