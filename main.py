@@ -11,7 +11,7 @@ from cache import cache
 
 max_api_wait_time = 6
 max_time = 10
-apis = [r'https://youtube.privacyplz.org/']
+apis = [r'https://invidious.qwik.space/']
 url = requests.get(r'https://raw.githubusercontent.com/mochidukiyukimi/yuki-youtube-instance/main/instance.txt').text.rstrip()
 version = "1.0"
 
