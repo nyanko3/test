@@ -11,12 +11,13 @@ from cache import cache
 
 max_api_wait_time = 6
 max_time = 10
-apis = [r"https://invidious.jing.rocks/",
-r"https://inv.nadeko.net/",
-r"https://invidious.private.coffee/",
-r"https://invidious.protokolla.fi/",
-r"https://invidious.perennialte.ch/",
-r"https://yt.cdaut.de/"]
+apis = [r"https://invidious.materialio.us/",
+r"https://yewtu.be/",
+r"https://invidious.fdn.fr/",
+r"https://inv.tux.pizza/",
+r"https://invidious.privacyredirect.com/",
+r"https://invidious.drgns.space/",
+r"https://vid.puffyan.us"]
 url = requests.get(r'https://raw.githubusercontent.com/mochidukiyukimi/yuki-youtube-instance/main/instance.txt').text.rstrip()
 version = "1.0"
 
