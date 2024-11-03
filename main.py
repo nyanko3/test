@@ -11,43 +11,7 @@ from cache import cache
 
 max_api_wait_time = 6
 max_time = 10
-apis = [r"https://invidious.jing.rocks/",
-r"https://inv.nadeko.net/",
-r"https://invidious.private.coffee/",
-r"https://invidious.protokolla.fi/",
-r"https://invidious.perennialte.ch/",
-r"https://yt.cdaut.de/",
-r"https://invidious.materialio.us/",
-r"https://yewtu.be/",
-r"https://invidious.fdn.fr/",
-r"https://inv.tux.pizza/",
-r"https://invidious.privacyredirect.com/",
-r"https://invidious.drgns.space/",
-r"https://vid.puffyan.us",
-r"https://youtube.076.ne.jp/",
-r"https://vid.puffyan.us/",
-r"https://inv.riverside.rocks/",
-r"https://invidio.xamh.de/",
-r"https://invidious.sethforprivacy.com/",
-r"https://invidious.tiekoetter.com/",
-r"https://inv.bp.projectsegfau.lt/",
-r"https://inv.vern.cc/",
-r"https://invidious.nerdvpn.de/",
-r"https://inv.privacy.com.de/",
-r"https://invidious.rhyshl.live/",
-r"https://invidious.slipfox.xyz/",
-r"https://invidious.weblibre.org/",
-r"https://invidious.namazso.eu/",
-r"https://inv.us.projectsegfau.lt/",
-r"https://invidious.qwik.space/",
-r"https://yt.artemislena.eu/",
-r"https://youtube.privacyplz.org/",
-r"https://yt.thechangebook.org/",
-r"https://vro.omcat.info/",
-r"https://iv.nboeck.de/",
-r"https://youtube.mosesmang.com/",
-r"https://iteroni.com/",
-r"https://invi.susurrando.com/"]
+apis = [r"https://iv.nowhere.moe/"]
 url = requests.get(r'https://raw.githubusercontent.com/mochidukiyukimi/yuki-youtube-instance/main/instance.txt').text.rstrip()
 version = "1.0"
 
