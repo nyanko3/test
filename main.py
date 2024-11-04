@@ -8,20 +8,6 @@ import subprocess
 import os
 from cache import cache
 
-
-max_api_wait_time = 6
-max_time = 10
-apis = [import json
-import requests
-import urllib.parse
-import time
-import datetime
-import random
-import os
-import subprocess
-from cache import cache
-
-
 max_api_wait_time = 3
 max_time = 6
 apis = [r"https://clips.im.allmendenetz.de/",
