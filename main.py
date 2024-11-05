@@ -13,7 +13,6 @@ max_time = 6
 apis = [r"https://inv.vern.cc/",
 r"https://invi.susurrando.com/",
 r"https://invidio.xamh.de/",
-r"https://invidious.0011.lt/",
 r"https://invidious.adminforge.de/",
 r"https://invidious.baczek.me/",
 r"https://invidious.chunboan.zone/",
