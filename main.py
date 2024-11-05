@@ -24,8 +24,7 @@ r"https://invidious.fdn.fr/",
 r"https://inv.vern.cc/",
 r"https://invi.susurrando.com/",
 r"https://invidious.nerdvpn.de/",
-r"https://invidious.einfachzocken.eu/",
-r"https://inv.zzls.xyz/"]
+r"https://invidious.einfachzocken.eu/"]
 url = requests.get(r'https://raw.githubusercontent.com/mochidukiyukimi/yuki-youtube-instance/main/instance.txt').text.rstrip()
 version = "1.0"
 
