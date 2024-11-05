@@ -10,14 +10,21 @@ from cache import cache
 
 max_api_wait_time = 3
 max_time = 10
-apis = [r"https://inv.vern.cc/",
+apis = [r"https://inv.us.projectsegfau.lt/",
+r"https://invidious.qwik.space/",
+r"https://invidious.private.coffee/",
+r"https://invidious.jing.rocks/",
+r"https://youtube.privacyplz.org/",
+r"https://yt.thechangebook.org/",
+r"https://vro.omcat.info/",
+r"https://iv.nboeck.de/",
+r"https://youtube.mosesmang.com/",
+r"https://iteroni.com/",
+r"https://inv.nadeko.net/",
+r"https://invidious.fdn.fr/",
+r"https://inv.vern.cc/",
 r"https://invi.susurrando.com/",
-r"https://invidio.xamh.de/",
-r"https://invidious.0011.lt/",
-r"https://invidious.adminforge.de/",
-r"https://invidious.baczek.me/",
-r"https://invidious.chunboan.zone/",
-r"https://invidious.drgns.space/",
+r"https://invidious.nerdvpn.de/",
 r"https://invidious.einfachzocken.eu/"]
 url = requests.get(r'https://raw.githubusercontent.com/mochidukiyukimi/yuki-youtube-instance/main/instance.txt').text.rstrip()
 version = "1.0"
