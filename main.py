@@ -9,12 +9,8 @@ import os
 from cache import cache
 
 max_api_wait_time = 3
-max_time = 6
-apis = [r"https://invidious.adminforge.de/",
-r"https://invidious.baczek.me/",
-r"https://invidious.chunboan.zone/",
-r"https://invidious.drgns.space/",
-r"https://invidious.einfachzocken.eu/"]
+max_time = 10
+apis = [r"https://invidious.0011.lt/"]
 url = requests.get(r'https://raw.githubusercontent.com/mochidukiyukimi/yuki-youtube-instance/main/instance.txt').text.rstrip()
 version = "1.0"
 
