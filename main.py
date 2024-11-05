@@ -10,7 +10,17 @@ from cache import cache
 
 max_api_wait_time = 3
 max_time = 10
-apis = [r"https://invidious.fdn.fr/",
+apis = [r"https://inv.us.projectsegfau.lt/",
+r"https://invidious.private.coffee/",
+r"https://invidious.jing.rocks/",
+r"https://youtube.privacyplz.org/",
+r"https://yt.thechangebook.org/",
+r"https://vro.omcat.info/",
+r"https://iv.nboeck.de/",
+r"https://youtube.mosesmang.com/",
+r"https://iteroni.com/",
+r"https://inv.nadeko.net/",
+r"https://invidious.fdn.fr/",
 r"https://inv.vern.cc/",
 r"https://invi.susurrando.com/",
 r"https://invidious.nerdvpn.de/",
