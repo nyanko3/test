@@ -17,7 +17,7 @@ max_time = 10
 
 class InvidiousAPI:
     def __init__(self):
-        self.videos = ast.literal_eval(requests.get('https://github.com/nyanko3/invi/raw/refs/heads/main/test.text').text)
+        self.videos = ast.literal_eval(requests.get('https://raw.githubusercontent.com/renrenrenrenrenrenrenrenrenren0209/invv/refs/heads/main/instances.txt').text)
         
         self.channels = []
         self.comments = []
