@@ -11,13 +11,13 @@ import ast
 import pprint
 
 # 3 => (3.0, 1.5)
-max_api_wait_time = 3
+max_api_wait_time = (3.0, 1.5)
 # 10 => 10
-max_time = 6
+max_time = 10
 
 class InvidiousAPI:
     def __init__(self):
-        self.videos = ast.literal_eval(requests.get('https://raw.githubusercontent.com/nyanko3/invi/refs/heads/main/test.txt').text)
+        self.videos = ast.literal_eval(requests.get('https://raw.githubusercontent.com/nyanko3/invi/main/test.txt').text)
         
         self.channels = []
         self.comments = []
@@ -85,6 +85,9 @@ def apirequest(path, api_urls):
                         continue
                 print(f"Success({invidious_api.checkVideo})({path.split('/')[1].split('?')[0]}): {api}")
                 return res.text
+            elif is_json(res.text):
+                print(f"Returned Err0r: {api}('{json.loads(res.text)['error']}')")
+                updateList(api_urls, api)
             else:
                 print(f"Returned Err0r: {api}")
                 updateList(api_urls, api)
@@ -109,7 +112,10 @@ def get_search(q, page):
             return {"title": i["title"], "id": i["videoId"], "authorId": i["authorId"], "author": i["author"], "length":str(datetime.timedelta(seconds=i["lengthSeconds"])), "published": i["publishedText"], "type": "video"}
             
         elif i["type"] == "playlist":
-            return {"title": i["title"], "id": i["playlistId"], "thumbnail": i["videos"][0]["videoId"], "count": i["videoCount"], "type": "playlist"}
+            try:
+                return {"title": i["title"], "id": i["playlistId"], "thumbnail": i["videos"][0]["videoId"], "count": i["videoCount"], "type": "playlist"}
+            except:
+                return {"title": "Load Failed", "id": "", "thumbnail": "", "count": "", "type": "playlist"}
             
         elif i["authorThumbnails"][-1]["url"].startswith("https"):
             return {"author": i["author"], "id": i["authorId"], "thumbnail": i["authorThumbnails"][-1]["url"], "type": "channel"}
@@ -118,6 +124,7 @@ def get_search(q, page):
             return {"author": i["author"], "id": i["authorId"], "thumbnail": f"https://{i['authorThumbnails'][-1]['url']}", "type": "channel"}
     
     return [load_search(i) for i in t]
+
 
 def get_channel(channelid):
     t = json.loads(apirequest(f"/channels/{urllib.parse.quote(channelid)}", invidious_api.channels))
@@ -170,7 +177,8 @@ from typing import Union
 
 app = FastAPI(docs_url=None, redoc_url=None, openapi_url=None)
 app.mount("/css", StaticFiles(directory="./css"), name="static")
-app.mount("/nyanko_a", StaticFiles(directory="./blog", html=True), name="static")
+app.mount("/js", StaticFiles(directory="./js"), name="static")
+app.mount("/quiz", StaticFiles(directory="./blog", html=True), name="static")
 app.add_middleware(GZipMiddleware, minimum_size=1000)
 
 from fastapi.templating import Jinja2Templates
@@ -184,7 +192,7 @@ def home(response: Response, request: Request, yuki: Union[str] = Cookie(None)):
         response.set_cookie("yuki", "True", max_age=60 * 60 * 24 * 7)
         return template("home.html", {"request": request})
     print(check_cokie(yuki))
-    return redirect("/nyanko_a")
+    return redirect("/quiz")
 
 
 @app.get('/watch', response_class=HTMLResponse)
