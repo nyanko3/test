@@ -12,10 +12,10 @@ from cache import cache
 max_api_wait_time = 6
 max_time = 10
 apis = [
-    r"https://invidious.jing.rocks/",
-    r"https://invidious.nerdvpn.de/",
-    r"https://inv.nadeko.net/",
-    r"https://invidious.jing.rocks/",
+r"https://invidious.jing.rocks/",
+r"https://invidious.nerdvpn.de/",
+r"https://inv.nadeko.net/",
+r"https://invidious.jing.rocks/",
 r"https://inv.vern.cc/",
 r"https://inv.zzls.xyz/",
 r"https://invi.susurrando.com/",
@@ -349,7 +349,7 @@ from typing import Union
 
 app = FastAPI(docs_url=None, redoc_url=None, openapi_url=None)
 app.mount("/css", StaticFiles(directory="./css"), name="static")
-app.mount("/word", StaticFiles(directory="./blog", html=True), name="static")
+app.mount("/nyanko_a", StaticFiles(directory="./blog", html=True), name="static")
 app.add_middleware(GZipMiddleware, minimum_size=1000)
 
 from fastapi.templating import Jinja2Templates
@@ -366,7 +366,7 @@ def home(response: Response,request: Request,yuki: Union[str] = Cookie(None)):
         response.set_cookie("yuki","True",max_age=60 * 60 * 24 * 7)
         return template("home.html",{"request": request})
     print(check_cokie(yuki))
-    return redirect("/word")
+    return redirect("/nyanko_a")
 
 
 @app.get("/search", response_class=HTMLResponse,)
