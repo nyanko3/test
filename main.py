@@ -19,7 +19,7 @@ header = {
 
 class InvidiousAPI:
     def __init__(self):
-        self.videos = ast.literal_eval(requests.get('https://raw.githubusercontent.com/nyanko3/invi/refs/heads/main/test.txt', headers=header, timeout=(1.0, 0.5)).text)
+        self.videos = ast.literal_eval(requests.get('https://raw.githubusercontent.com/nyanko3/invi/refs/heads/main/a.txt', headers=header, timeout=(1.0, 0.5)).text)
         
         self.channels = []
         self.comments = []
