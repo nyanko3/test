@@ -240,6 +240,13 @@ def search(q:str, response: Response, request: Request, page:Union[int, None]=1,
     response.set_cookie("yuki", "True", max_age=60 * 60 * 24 * 7)
     return template("search.html", {"request": request, "results":get_search(q, page), "word":q, "next":f"/search?q={q}&page={page + 1}", "proxy":proxy})
 
+@app.get("/kensaku", response_class=HTMLResponse,)
+def search(q:str, response: Response, request: Request, page:Union[int, None]=1, yuki: Union[str] = Cookie(None), proxy: Union[str] = Cookie(None)):
+    if not(check_cokie(yuki)):
+        return redirect("/")
+    response.set_cookie("yuki", "True", max_age=60 * 60 * 24 * 7)
+    return template("kensaku.html", {"request": request, "results":get_search(q, page), "word":q, "next":f"/kensaku?q={q}&page={page + 1}", "proxy":proxy})
+
 @app.get("/hashtag/{tag}")
 def search(tag:str, response: Response, request: Request, page:Union[int, None]=1, yuki: Union[str] = Cookie(None)):
     if not(check_cokie(yuki)):
