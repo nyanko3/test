@@ -37,7 +37,7 @@
                                 
                             <a href="/watch?v={{ result['id'] }}" style="width:100%">
                                 <div class="thumbnail">
-                                    <img class="thumbnail" loading="lazy" src="{% if proxy == "True" %}/thumbnail?v={{ result['id'] }}{% else %}https://img.youtube.com/vi/{{ result['id'] }}/0.jpg{% endif %}" onerror="document.cookie = 'proxy=True;max-age=2592000;';">
+                                    <img class="thumbnail" loading="lazy" src="{% if proxy == "True" %}/thumbnail?v={{ result['id'] }}{% else %}https://i.ytimg.com/vi/{{ result['id'] }}/0.jpg{% endif %}" onerror="document.cookie = 'proxy=True;max-age=2592000;';">
                                     <p class="length">{{ result["length"] }}</p>
                                 </div>
                                 <p dir="auto">{{ result['title'] }}</p>
