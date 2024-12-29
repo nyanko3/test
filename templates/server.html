@@ -19,7 +19,7 @@
             
             <div id="logo" class="pure-u-1">
                 <h1 class="pure-menu-heading">Yuki Youtube</h1>
-                <a href="javascript:location.replace('/home')">サーバーを変更する</a>
+                <a href="javascript:location.replace('/')">サーバーを変更する</a>
             </div>
             
             <div class="pure-u-1-4"></div>
@@ -38,7 +38,7 @@
             $('#searchbox').autocomplete({
                 source: function (request, response) {
                     {
-                        var url = "/kensaku?keyword=" + request.term
+                        var url = "/suggest?keyword=" + request.term
                         var xhr = new XMLHttpRequest();
                         xhr.open("GET", url);
                         xhr.onload = function() {
