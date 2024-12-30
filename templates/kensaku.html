@@ -35,7 +35,7 @@
                         <div class="h-box">
                             {% if result["type"] == "video" %}
                                 
-                            <a href="/douga?v={{ result['id'] }}" style="width:100%">
+                            <a href="/watchwa?v={{ result['id'] }}" style="width:100%">
                                 <div class="thumbnail">
                                     <img class="thumbnail" loading="lazy" src="{% if proxy == "True" %}/thumbnail?v={{ result['id'] }}{% else %}https://i.ytimg.com/vi/{{ result['id'] }}/0.jpg{% endif %}" onerror="document.cookie = 'proxy=True;max-age=2592000;';">
                                     <p class="length">{{ result["length"] }}</p>
@@ -44,7 +44,7 @@
                             </a>
                                 
                             <div class="video-card-row flexible">
-                                <a href="/channel/{{ result['authorId'] }}">{{ result["author"] }}</a>
+                                <a href="/chanel/{{ result['authorId'] }}">{{ result["author"] }}</a>
                             </div>
                                 
                             <div class="video-card-row flexible">
@@ -54,7 +54,7 @@
                             </div>
                                 
                             {% elif result["type"] == "channel" %}
-                            <a href="/channel/{{ result["id"] }}">
+                            <a href="/chanel/{{ result["id"] }}">
                                 <center>
                                     <img loading="lazy" tabindex="-1" style="width:56.25%" src="{{ result["thumbnail"] }}">
                                 </center>
