@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title>連番を作成中</title>
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/css/font.css">
+  <link rel="stylesheet" href="/css/plyr.css">
+  <link rel="stylesheet" href="/css/styles.css">
+  <link rel="stylesheet" href="/css/slide.css">
+  <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script src="/static/bootstrap.min.js"></script>
+</head>
+
+<body>
+<header>
+  <div class="banner">
+   <button class="btn btn-link" onclick="window.location.href='/server'">ホーム</button>
+      <form class="d-flex" action="/kensaku" method="get">
+          <input id="searchbox" name="q" class="form-control" type="text" placeholder="検索" aria-label="Search" required>
+      </form>
+   <button class="btn btn-link" id="menu-btn" style="position: absolute; right: 10px;">ツール</button>
+ </div>
+</header>
+<nav id="side-menu" class="side-menu">
+    <ul>
+        <li><label for="loopCheck" class="custom-checkbox">
+        ループ再生する
+        <input type="checkbox" id="loopCheck">
+        <span class="checkmark"></span>
+        </label></li>
+        <li><a href="{{streamUrl}}" target="_blank">ストリームURLに移動</a></li>
+	<li><a href="/www?v={{ videoid }}">高画質で再生する</a></li>
+        <li><a href="https://github.com/sadaramagura" target="_blank">GitHub</a></li>
+    </ul>
+</nav>
+<div id="overlay" class="overlay"></div>
+<div class="card">
+    <div class="loading-indicator">
+        <img src="https://cdn.glitch.global/3128bf45-3a23-4695-81ba-3aba21b8585b/IMG_1966.gif?v=1729824394361" alt="Loading..." />
+    </div>
+  <video id="wakameVideo" controls autoplay poster="{% if proxy == 'True' %}/thumbnail?v={{ videoid }}{% else %}https://i.ytimg.com/vi/{{ videoid }}/0.jpg{% endif %}">
+    <source src="{{streamUrl}}" type="video/mp4">
+    読み込み失敗。ブラウザをアップデートしてどうぞ。
+  </video>
+</div>
+<div class="card">
+  <div class="toolcard-header">
+    <small class="text-muted float-right"><button id="reloadButton">動画を再読み込み</button></small>
+  </div>
+  <div class="card-channel">
+    <div class="container">
+    <a href="/channel/{{authorid}}">
+    <img src="{{authoricon}}" alt="画像">
+    {{ author }}
+    </a>
+    </div>
+  </div>
+  <div class="card-body">
+    <h4>
+      {{ videotitle }}
+    </h4>
+      <p>{{ description | safe}}</p>
+  </div>
+</div>
+  <div class="comment-box">
+    <h2>コメント</h2>
+    <div class="iframe-container">
+      <iframe src="/comments?v={{ videoid }}" scrolling="yes"></iframe>
+    </div>
+  </div>
+    <br>
+   <style>
+	* {
+		--plyr-color-main: #ff8181;
+	}
+
+	a {
+		color: #ff8181;
+	}
+  .card {
+  border: 1px solid #ccc;
+  border-radius: 15px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  margin: 10px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.card:hover {
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.card-header, .card-footer {
+  background-color: #f8f9fa;
+  padding: 10px 15px;
+  border-bottom: 1px solid #ddd;
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+  
+.card-channel {
+  padding: 7px;
+  height: 49px;
+}
+.card-channel p{
+  margin-left: 65px;
+}
+
+.card-body {
+  padding: 15px;
+}
+
+.card-body h5 {
+  margin-bottom: 10px;
+}
+
+.card-body p {
+  margin: 0;
+  white-space: pre-line;
+}
+video {
+  width: 100%;
+  height:100%;
+  }
+.card-title h4 {
+  font-size: 1.6rem; 
+  color: #333;
+  margin: 10px 0; 
+}
+
+.card-title .container {
+  padding: 0 15px;
+}
+
+.toolcard-header {
+  background-color: #FFF5F7;
+  padding: 10px 10px;
+  border-bottom: 0.5px solid #f8e58c;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 30px;
+}
+        .container {
+            height: 35px;
+            display: flex;
+            align-items: center;
+        }
+
+        .container img {
+            width: 35px;
+            height: 35px;
+        }
+
+        .container .text {
+            margin-left: 10px;
+        }
+    .comment-box {
+      background-color: #ffffff;
+      width: 85%;
+      border-radius: 10px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+      text-align: left;
+      box-sizing: border-box;
+    }
+
+    .comment-box h2 {
+      margin: 0 0 10px;
+      font-size: 24px;
+      color: #333;
+    }
+
+    .iframe-container {
+      width: 100%;
+      height: 900px;
+      border: none;
+      overflow: hidden;
+      border-radius: 10px;
+      box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+    iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+    .tube-box {
+      background-color: #ffffff;
+      width: 100%;
+      border-radius: 10px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+      text-align: left;
+      box-sizing: border-box;
+    }
+.video-container {
+    position: relative;
+}
+
+.loading-indicator {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: none;
+    z-index: 10;
+}
+
+.loading-indicator img {
+    width: 75px;
+    height: 75px;
+}
+  </style>
+<script>
+const menuBtn = document.getElementById('menu-btn');
+const sideMenu = document.getElementById('side-menu');
+const overlay = document.getElementById('overlay');
+
+function toggleMenu() {
+    sideMenu.classList.toggle('open');
+    overlay.classList.toggle('active');
+}
+
+menuBtn.addEventListener('click', toggleMenu);
+
+overlay.addEventListener('click', toggleMenu);
+document.getElementById('reloadButton').addEventListener('click', function() {
+    const video = document.getElementById('wakameVideo');
+    
+    video.load();
+});
+$('#searchbox').autocomplete({
+            source: function (request, response) {
+                {
+            var url = "/suggest?keyword="+ request.term
+            var xhr = new XMLHttpRequest();
+            xhr.open("GET", url);
+            xhr.onload = function() {
+                response(JSON.parse(xhr.responseText));
+            }
+            xhr.send();
+        }},delay:300});
+document.onkeydown = keydown;
+function keydown(key) {
+  var v = document.getElementById("wakameVideo");
+  if (key.keyCode == 32 || key.keyCode == 75) {
+    if (v.paused == true) {
+      v.play(); 
+    } else {
+      v.pause(); 
+    }
+  }
+}
+const video = document.getElementById("wakameVideo");
+const loopCheck = document.getElementById("loopCheck");
+
+loopCheck.addEventListener('change', function() {
+    video.loop = this.checked;
+});
+</script>
+</html>
