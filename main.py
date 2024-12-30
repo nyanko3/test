@@ -270,6 +270,53 @@ def suggest(keyword:str):
 def getSource(name):
     return requests.get(f'https://raw.githubusercontent.com/LunaKamituki/yuki-source/refs/heads/main/{name}.html', headers=header).text
 
+def getting_data(videoid):
+    urls = [
+        f"https://dougayoutube.glitch.me/api/login/{urllib.parse.quote(videoid)}"
+    ]
+    for url in urls:
+        response = requests.get(url)
+        if response.status_code == 200:
+            t = response.json()
+            
+            recommended_videos = [{
+               "id": t["videoId"],
+               "title": t["videoTitle"],
+               "authorId": t["channelId"],
+               "author": t["channelName"],
+               "viewCountText": f"{t['videoViews']} views"
+           }]
+            
+            stream_url = t["stream_url"]
+            description = t["videoDes"].replace("\n", "<br>")
+            title = t["videoTitle"]
+            authorId = t["channelId"]
+            author = t["channelName"]
+            author_icon = t["channelImage"]
+            highstreamUrl = t["highstreamUrl"]
+            audioUrl = t["audioUrl"]
+            
+            return recommended_videos, stream_url, description, title, authorId, author, author_icon, highstreamUrl, audioUrl
+
+@app.get('/video', response_class=HTMLResponse)
+def video(v: str, request: Request):
+    videoid = v
+    t = getting_data(videoid)
+    print(t)
+    print(t[1])
+    return template('watchwa.html', {
+        "request": request,
+        "videoid": videoid,
+        "res": t[0],
+        "videourls": t[1],
+        "description": t[2],
+        "videotitle": t[3],
+        "authorid": t[4],
+        "authoricon": t[6],
+        "author": t[5],
+        "streamUrl": t[1],
+    })
+  
 @app.get("/bbs", response_class=HTMLResponse)
 def view_bbs(request: Request, name: Union[str, None] = "", seed:Union[str, None]="", channel:Union[str, None]="main", verify:Union[str, None]="false", yuki: Union[str] = Cookie(None)):
     if not(check_cokie(yuki)):
